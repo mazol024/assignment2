@@ -80,6 +80,7 @@ if(isset($_POST['submit'])){
     echo "<div style='float: left'>";
     $xml=simplexml_load_file("./rooms/roomBookings.xml") or die("Error: Cannot create object");
     print_r($xml);
+/*    for ($i=0 ; $i<$xml.)*/
     echo "</div>";
 } else {
     echo "No Submit";
