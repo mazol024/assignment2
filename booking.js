@@ -39,6 +39,7 @@ function changeLDate() {
 
 }
 
+
 var Booking = (function () {
     var target;
     var pub = {};
