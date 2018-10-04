@@ -67,6 +67,7 @@
                 }
                 echo "</select></span>";
                 echo "<br/><input value='Show Available' name='submit' type='submit' > ";
+/*                echo "<input value='Show Available' name='submit' type='submit' > ";*/
             ?>
             </fieldset>
         </form>
@@ -77,22 +78,41 @@
     </section>
 <?php
 if(isset($_POST['submit'])){
+    $dayStart = $_POST['dayStart'];
+    $dayEnd = $_POST['dayEnd'];
+    $monthStart = $_POST['monthStart'];
+    $monthEnd = $_POST['monthEnd'];
+    $yearStart = $_POST['yearStart'];
+    $yearEnd = $_POST['yearEnd'];
     echo "<div style='float: left'>";
+    echo "<p style='color: #777777'>Your period: $dayStart/$monthStart/$yearStart - $dayEnd/$monthEnd/$yearEnd</p><br>";
+    echo "<form action='writeXML.php' method='post'>";
+    echo "<label id='username' for='username'>Please, Enter Your Booking name:</label> 
+    <input required type='text' size='35' name='username' id='username'>";
     $xml = simplexml_load_file("./rooms/hotelRooms.xml") or die("Error: Cannot create object");
-    echo "<table><tr><th>Room number</th><th>Room Type</th><th>Room Description </th><th>Price per Night</th></tr>";
+    echo "<table><tr><th>Room number</th><th>Room Type</th><th>Room Description </th><th>Price per Night</th><th>Book It</th></tr>";
     foreach ($xml as $element){
-        echo  "<tr><td>" . $element -> number ;
-        echo "</td><td>" . $element -> roomType ;
-        echo "</td><td>" . $element -> description ;
-        echo "</td><td>" . $element -> pricePerNight . "</td></tr>";
         $number = $element -> number ;
         $roomType = $element -> roomType ;
         $description = $element -> description ;
         $pricePerNight = $element -> pricePerNight;
+        echo  "<tr class='bookingRow'><td>" . $element -> number ;
+        echo "</td><td>" . $element -> roomType ;
+        echo "</td><td>" . $element -> description ;
+        echo "</td><td>" . $element -> pricePerNight ;
+        echo "</td><td style='text-align: right'><input type='radio' name='number' value=$number > </td></tr>";
     }
-    echo "</table></div>";
+    echo "</table><br>";
+    /*echo "<input type='text' hidden name='number' value='$number'>";*/
+    echo "<input type='text' hidden name='dayStart' value='$dayStart'>";
+    echo "<input type='text' hidden name='monthStart' value='$monthStart'>";
+    echo "<input type='text' hidden name='yearStart' value='$yearStart'>";
+    echo "<input type='text' hidden name='dayEnd' value='$dayEnd'>";
+    echo "<input type='text' hidden name='monthEnd' value='$monthEnd'>";
+    echo "<input type='text' hidden name='yearEnd' value='$yearEnd'>";
+    echo "<input type='submit' name='submit' value='Finish Booking'><br/>";
+    echo "</form></div>";
 } else {
-    echo "No Submit";
 }
 ?>
 <?php include ("footer.php"); ?>

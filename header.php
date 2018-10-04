@@ -17,7 +17,7 @@
             echo "<script src='$script'></script>";
         }
     }
-    if ( !isset($_SESSION['arrayBookings']))
+    /*if ( !isset($_SESSION['arrayBookings']))
         $arrayBookings = array();
         $arrayIndx = 0;
         $xml=simplexml_load_file("./rooms/roomBookings.xml") or die("Error: Cannot create object");
@@ -29,7 +29,7 @@
             array_push($arrayBookings,$arrayTemp);
             $arrayIndx = $arrayIndx + 1;
         }
-        $_SESSION['arrayBookings']=$arrayBookings;
+        $_SESSION['arrayBookings']=$arrayBookings;*/
     ?>
 </head>
 
@@ -47,6 +47,7 @@
             }
             if ($currentPage === 'rooms.php') {
                 echo "<a class='active' href='rooms.php'>Rooms</a>";
+                echo "<a  href='editRooms.php' style='color: black'>(Admin)</a>";
             } else {
                 echo "<a href='rooms.php'>Rooms</a>";
             }

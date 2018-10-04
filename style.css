@@ -242,3 +242,8 @@ td {
     float: right;
 
 }
+.bookingRow:hover {
+    background-color: #777777;
+    color: white;
+
+}
