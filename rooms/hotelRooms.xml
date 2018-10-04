@@ -2,7 +2,7 @@
     <hotelRoom>
         <number>101</number>
         <roomType>King</roomType>
-        <description>A lovely room with a garden patio.</description>
+        <description>A lovely room with Garden Patio.</description>
         <pricePerNight>225.00</pricePerNight>
     </hotelRoom>
     <hotelRoom>
@@ -60,5 +60,4 @@
         <description>Two bedroom suite.</description>
         <pricePerNight>325.00</pricePerNight>
     </hotelRoom>
-    
 </hotelRooms>

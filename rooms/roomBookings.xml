@@ -59,4 +59,4 @@
             <year>2018</year>
         </checkout>
     </booking>
-<booking><number>302</number><name>Bill Gates  and his Family</name><checkin><day>11</day><month>12</month><year>2018</year></checkin><checkout><day>20</day><month>10</month><year>2018</year></checkout></booking><booking><number>202</number><name>Master Dent and Band</name><checkin><day>15</day><month>10</month><year>2018</year></checkin><checkout><day>28</day><month>10</month><year>2018</year></checkout></booking></bookings>
+<booking><number>302</number><name>Bill Gates  and his Family</name><checkin><day>11</day><month>12</month><year>2018</year></checkin><checkout><day>20</day><month>10</month><year>2018</year></checkout></booking></bookings>

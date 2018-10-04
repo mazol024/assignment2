@@ -10,9 +10,9 @@ include ('header.php');
     <div id="showbookings">
         <?php
         if (isset($_POST['submit'])) {
-        $b=array();
-        $b = $_POST['choosenRow'];
-        $a = explode("/",$b);
+        $a=array();
+        $b = convert_uudecode($_POST['choosenRow']);
+        $a = explode("ˆ",$b);
             $xmlBooking=simplexml_load_file("./rooms/roomBookings.xml") or die("Error: Cannot create object");
             foreach ($xmlBooking->booking as $booking) {
                 $number = $booking->number;
@@ -48,7 +48,7 @@ include ('header.php');
             echo "</td><td>" . $dayEnd . "/";
             echo $monthEnd . "/";
             echo $yearEnd;
-            $a = $number."/".$dayStart."/".$monthStart."/".$yearStart."/".$dayEnd."/".$monthEnd."/".$yearEnd;
+            $a = convert_uuencode($number."ˆ".$dayStart."ˆ".$monthStart."ˆ".$yearStart."ˆ".$dayEnd."ˆ".$monthEnd."ˆ".$yearEnd);
             /*$a = json_encode(array("room"=>$number,"day"=>$dayStart,"month"=>$monthStart,"year"=>$yearStart));*/
             echo "</td><td style='text-align: right'><input type='radio' name='choosenRow' value=$a >";
             echo  "</td></tr>";
