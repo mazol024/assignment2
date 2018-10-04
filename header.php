@@ -19,12 +19,15 @@
     }
     if ( !isset($_SESSION['arrayBookings']))
         $arrayBookings = array();
+        $arrayIndx = 0;
         $xml=simplexml_load_file("./rooms/roomBookings.xml") or die("Error: Cannot create object");
         foreach ($xml as $element) {
+
             $arrayCheckIn = array("day"=>$element->checkin->day, "month"=>$element->checkin->month, "year"=>$element->checkin->year );
             $arrayCheckOut = array("day"=>$element->checkout->day, "month"=>$element->checkout->month, "year"=>$element->checkout->year );
-            $arrayTemp = array("number"=>$element->number, "name"=>$element->name, "checkin"=>$arrayCheckIn,"checkout"=>$arrayCheckOut);
+            $arrayTemp = array("indx"=>$arrayIndx, "number"=>$element->number, "name"=>$element->name, "checkin"=>$arrayCheckIn,"checkout"=>$arrayCheckOut);
             array_push($arrayBookings,$arrayTemp);
+            $arrayIndx = $arrayIndx + 1;
         }
         $_SESSION['arrayBookings']=$arrayBookings;
     ?>
