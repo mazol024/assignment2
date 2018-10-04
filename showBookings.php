@@ -11,18 +11,20 @@ include ('header.php');
         <?php
         if (isset($_POST['submit'])) {
             echo "Submitted <br>";
-            $i = $_POST['rowindex'];
+            $i = $_POST['booking'];
             echo "Indx: $i<br>";
             $t = $_SESSION['arrayBookings'];
             unset($t[$i]);
+            unset($_SESSION['arrayBookings']) ;
             $_SESSION['arrayBookings'] = $t;
         }
-        ?>
         ?>
         <form name="admin" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <?php
         foreach ($_SESSION['arrayBookings'] as $element) {
+
             echo $element['indx'] . ":  ";
+            $tmp = $element['indx'];
             echo $element['number'] . ";  ";
             echo $element['name'] . ",  from: ";
             echo $element['checkin']['day'] . "/";
@@ -31,10 +33,9 @@ include ('header.php');
             echo $element['checkout']['day'] . "/";
             echo $element['checkout']['month'] . "/";
             echo $element['checkout']['year'] . " ";
-            echo "<input value='$element[indx]'  name='roindex' id='rowindex'>";
-            echo "<input type='submit' name='submit' value='Cancel'><br/>";
+            echo "<input type='radio' name='booking' value=$tmp ><br/>";
         }
-
+        echo "<input type='submit' name='submit' value='Cancel'><br/>";
         ?>
         </form>
 

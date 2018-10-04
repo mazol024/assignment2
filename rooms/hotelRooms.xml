@@ -1,5 +1,4 @@
 <hotelRooms>
-
     <hotelRoom>
         <number>101</number>
         <roomType>King</roomType>
@@ -12,7 +11,6 @@
         <description>A small room under the stairs.</description>
         <pricePerNight>125.00</pricePerNight>
     </hotelRoom>
-
     <hotelRoom>
         <number>201</number>
         <roomType>Double</roomType>
