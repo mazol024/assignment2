@@ -78,9 +78,16 @@
 <?php
 if(isset($_POST['submit'])){
     echo "<div style='float: left'>";
-    $xml=simplexml_load_file("./rooms/roomBookings.xml") or die("Error: Cannot create object");
-    print_r($xml);
-/*    for ($i=0 ; $i<$xml.)*/
+    foreach ($_SESSION['arrayBookings'] as $element) {
+        echo $element['number'] . ";  ";
+        echo $element['name'] . ",  from: ";
+        echo $element['checkin']['day'] . "/";
+        echo $element['checkin']['month'] . "/";
+        echo $element['checkin']['year'] . "  to: ";
+        echo $element['checkout']['day'] . "/";
+        echo $element['checkout']['month'] . "/";
+        echo $element['checkout']['year'] . "<br>";
+    }
     echo "</div>";
 } else {
     echo "No Submit";

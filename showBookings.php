@@ -9,17 +9,17 @@ include ('header.php');
     <hr>
     <div id="showbookings">
         <?php
-            $xml=simplexml_load_file("./rooms/roomBookings.xml") or die("Error: Cannot create object");
-        foreach ($xml as $element) {
-                    echo $element->number . ";  ";
-                    echo $element->name . ",  from: ";
-                    echo $element->checkin->day . "/";
-                    echo $element->checkin->month . "/";
-                    echo $element->checkin->year . "  to: ";
-                    echo $element->checkout->day . "/";
-                    echo $element->checkout->month . "/";
-                    echo $element->checkout->year . "<br>";
+        foreach ($_SESSION['arrayBookings'] as $element) {
+                    echo $element['number'] . ";  ";
+                    echo $element['name'] . ",  from: ";
+                    echo $element['checkin']['day'] . "/";
+                    echo $element['checkin']['month'] . "/";
+                    echo $element['checkin']['year'] . "  to: ";
+                    echo $element['checkout']['day'] . "/";
+                    echo $element['checkout']['month'] . "/";
+                    echo $element['checkout']['year'] . "<br>";
         }
+
         ?>
     </div>
 <?php include ("footer.php"); ?>
