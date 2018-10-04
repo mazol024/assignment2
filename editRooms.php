@@ -1,8 +1,17 @@
 <?php
 include ('header.php');
-echo "<main><h1 style='color: #777777;text-align: right'>Manage Rooms<br></h1><hr>";
+echo "<main><h3 style='color: darkblue;text-align: right'><em>Manage Rooms</em><br></h3><hr>";
 if (isset($_POST['submit'])) {
-    echo "Room number " . $_POST['number'];
+    echo "<form action='writeChanges.php' method='post'>";
+    echo "<table><tr><th>Room number</th><th>Room Type</th><th>Room Description </th><th>Price per Night</th></tr>";
+    echo  "<tr class='bookingRow'><td>" . $number ;
+    echo "</td><td>" . $roomType ;
+    echo "</td><td>" . $description ;
+    echo "</td><td>" . $pricePerNight ;
+    echo "</td></tr>";
+    echo "</table><br>";
+    echo "<input type='submit' name='submit1' value='Save Changes'><br/>";
+    echo "</form></div>";
 } else {
 echo "<form action='editRooms.php' method='post'>";
 $xmlRooms = simplexml_load_file("./rooms/hotelRooms.xml") or die("Error: Cannot create object");

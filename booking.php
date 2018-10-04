@@ -6,7 +6,7 @@
 
 <main >
 
-    <h3>
+    <h3 style="color: darkblue">
         <em>Make Your Booking!</em>
     </h3>
     <div id="calendar" style="float: left">

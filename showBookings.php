@@ -5,7 +5,7 @@ include ('header.php');
 
 
     <main >
-    <h1 style='color: #777777;text-align: right'>Manage Bookings<br></h1>
+    <h3 style='color: darkblue;text-align: right'><em>Manage Bookings</em><br></h3>
     <hr>
     <div id="showbookings">
         <?php
