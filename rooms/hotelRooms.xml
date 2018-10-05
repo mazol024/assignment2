@@ -2,9 +2,9 @@
 <hotelRooms>
     <hotelRoom>
         <number>101</number>
-        <roomType>Twin</roomType>
-        <description>A very big room with balcony</description>
-        <pricePerNight>280.00</pricePerNight>
+        <roomType>King</roomType>
+        <description>A lovely room with a garden patio.</description>
+        <pricePerNight>225.00</pricePerNight>
     </hotelRoom>
     <hotelRoom>
         <number>102</number>
@@ -55,10 +55,5 @@
         <description>Superior room with king-size bed.</description>
         <pricePerNight>225.00</pricePerNight>
     </hotelRoom>
-    <hotelRoom>
-        <number>303</number>
-        <roomType>Triple Room</roomType>
-        <description>Two bedroom suite.</description>
-        <pricePerNight>325.00</pricePerNight>
-    </hotelRoom>
-</hotelRooms>
+    
+<hotelRoom><number>112</number><roomType>Twin Bed</roomType><description>Very good room for small money.</description><pricePerNight>112.99</pricePerNight></hotelRoom></hotelRooms>

@@ -28,7 +28,7 @@
                 echo "</select>";
                 echo "/";
                 echo "<select name='monthStart' id='monthStart'>";
-                for ($i = 1; $i<13; $i++){
+                for ($i = 10; $i<13; $i++){
                     echo "<option value='$i'";
                     echo ($i == $currentMonth)?' selected ':'';
                     echo ">$i</option>";
@@ -36,7 +36,7 @@
                 echo "</select>";
                 echo "/";
                 echo "<select name='yearStart' id='yearStart'>";
-                for ($i = 2018; $i<2020; $i++){
+                for ($i = 2018; $i<=2018; $i++){
                     echo "<option value='$i'";
                     echo ($i == $currentYear)?' selected ':'';
                     echo ">$i</option>";
@@ -52,7 +52,7 @@
                 echo "</select>";
                 echo "/";
                 echo "<select name='monthEnd' id='monthEnd'>";
-                for ($i = 1; $i<13; $i++){
+                for ($i = 10; $i<13; $i++){
                     echo "<option value='$i'";
                     echo ($i == $currentMonth)?' selected ':'';
                     echo ">$i</option>";
@@ -60,7 +60,7 @@
                 echo "</select>";
                 echo "/";
                 echo "<select name='yearEnd' id='yearEnd'>";
-                for ($i = 2018; $i<2020; $i++){
+                for ($i = 2018; $i<=2018; $i++){
                     echo "<option value='$i'";
                     echo ($i == $currentYear)?' selected ':'';
                     echo ">$i</option>";
@@ -84,6 +84,18 @@ if(isset($_POST['submit'])){
     $monthEnd = $_POST['monthEnd'];
     $yearStart = $_POST['yearStart'];
     $yearEnd = $_POST['yearEnd'];
+    $arrayRooms = array();
+    $xmlBookings = simplexml_load_file('./rooms/roomBookings.xml');
+    foreach ($xmlBookings->booking as $item){
+        $n = $item->number;
+        if ($dayStart >= $item->checkin->day && $dayStart <= $item->checkout->day && $monthStart <= $item->checkin->month){
+            echo "Bookied : $n<br>";
+            array_push($arrayRooms,"$n");
+        } elseif ($dayEnd >= $item->checkin->day && $dayEnd <= $item->checkout->day && $monthEnd <= $item->checkout->month){
+            echo "Bookied : $n<br>";
+            array_push($arrayRooms,"$n");
+        }
+    }
     echo "<div style='float: left'>";
     echo "<p style='color: #777777'>Your period: $dayStart/$monthStart/$yearStart - $dayEnd/$monthEnd/$yearEnd</p><br>";
     echo "<form action='writeXML.php' method='post'>";
@@ -96,11 +108,22 @@ if(isset($_POST['submit'])){
         $roomType = $element -> roomType ;
         $description = $element -> description ;
         $pricePerNight = $element -> pricePerNight;
-        echo  "<tr class='bookingRow'><td>" . $element -> number ;
-        echo "</td><td>" . $element -> roomType ;
-        echo "</td><td>" . $element -> description ;
-        echo "</td><td>" . $element -> pricePerNight ;
-        echo "</td><td style='text-align: right'><input type='radio' name='number' value=$number > </td></tr>";
+            if ( in_array( $number,$arrayRooms) ){
+                $flag=false;
+                echo "Flag set to False";
+            } else {
+                $flag=true;
+            }
+        if ($flag) {
+            echo  "<tr class='bookingRow'><td>" . $element -> number ;
+            echo "</td><td>" . $element -> roomType ;
+            echo "</td><td>" . $element -> description ;
+            echo "</td><td>" . $element -> pricePerNight ;
+            echo "</td><td style='text-align: right'><input type='radio' name='number' value=$number > </td></tr>";
+
+        } else {
+
+        }
     }
     echo "</table><br>";
     /*echo "<input type='text' hidden name='number' value='$number'>";*/

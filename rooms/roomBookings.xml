@@ -59,4 +59,4 @@
             <year>2018</year>
         </checkout>
     </booking>
-<booking><number>302</number><name>Bill Gates  and his Family</name><checkin><day>11</day><month>12</month><year>2018</year></checkin><checkout><day>20</day><month>10</month><year>2018</year></checkout></booking><booking><number>101</number><name>Garbage Lovers</name><checkin><day>5</day><month>10</month><year>2018</year></checkin><checkout><day>6</day><month>10</month><year>2018</year></checkout></booking></bookings>
+<booking><number>101</number><name>Garbage Lovers</name><checkin><day>5</day><month>10</month><year>2018</year></checkin><checkout><day>6</day><month>10</month><year>2018</year></checkout></booking><booking><number>302</number><name>Terrence Wiliamce</name><checkin><day>5</day><month>10</month><year>2018</year></checkin><checkout><day>6</day><month>10</month><year>2018</year></checkout></booking><booking><number>301</number><name>Simpsons Family</name><checkin><day>5</day><month>10</month><year>2018</year></checkin><checkout><day>6</day><month>11</month><year>2018</year></checkout></booking></bookings>

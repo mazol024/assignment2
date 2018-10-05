@@ -1,4 +1,7 @@
+
 <?php
+$scriptList = array('jquery/jquery-3.3.1.min.js', 'carousel.js');
+include ('header.php');
 if (session_id() === "") {
     session_start();
 }
@@ -28,5 +31,9 @@ $checkOut->addChild('month',$m2);
 $checkOut->addChild('year',$y2);
 
 $newBookings->saveXML('./rooms/roomBookings.xml');
-header('Location: index.php');
+/*header('Location: index.php');*/
+echo "<main>";
+echo "<h3><em>Welcome to</em><br> 'Hotel Isabel'.</em></h3><div id='carousel'><div class='descriptionHotel'></div>";
+echo "<script>alert('Your Booking Successful!');</script>";
+include ('footer.php');
 ?>

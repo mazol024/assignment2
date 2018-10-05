@@ -16,9 +16,18 @@ echo "<main><h3 style='color: darkblue;text-align: right'><em>Manage Rooms</em><
 
 }*/
 if (isset($_POST['insert'])) {
-
+    echo "<div style='float: right'>";
+    echo "<form action='writeNewRoom.php' method='post'>";
+    echo "<table><tr><th>Room number</th><th>Room Type</th><th>Room Description </th><th>Price per Night</th></tr>";
+        echo "<tr ><td><input type='text' name='number' required placeholder='Number' value=''>";
+        echo  "</td><td><input type='text' required name='roomType' placeholder='Enter Room Type' value=''>";
+        echo  "</td><td><input type='text' size='50' required name='description' placeholder='Enter Description' value=''>";
+        echo  "</td><td><input type='text' size='7' required name='pricePerNight' placeholder='Price' value=''></td></tr>";
+    echo "</table><br>";
+    echo "<input type='submit' name='submit2' value='Save Changes'><br/>";
+    echo "</form></div>";
 }
-if (isset($_POST['delete'])) {
+if (isset($_POST['delete']) && $_POST['number']) {
     $number = $_POST['number'];
     $xmlBooking=simplexml_load_file("./rooms/roomBookings.xml") ;
     $query = $xmlBooking->xpath("booking[number=$number]");
@@ -29,9 +38,15 @@ if (isset($_POST['delete'])) {
         }
     }
     if ($flag){
-        echo "Booked! ";
+        echo "<script>alert('Room Booked and can not be Deleted!.');</script>";
     } else {
-        echo "Deleting !";
+        $rooms = simplexml_load_file("./rooms/hotelRooms.xml");
+        $query = $rooms->xpath("hotelRoom[number=$number]");
+        foreach ($query as $element){
+            unset($element[0]);
+        }
+        $rooms->saveXML('./rooms/hotelRooms.xml');
+        echo "<script>alert('Room Deleted!.');</script>";
     }
 
     }
@@ -39,6 +54,7 @@ if (isset($_POST['submit'])) {
     $number = $_POST['number'];
     $rooms = simplexml_load_file("./rooms/hotelRooms.xml");
     $query = $rooms->xpath("hotelRoom[number=$number]");
+    echo "<div style='float: right'>";
     echo "<form action='writeRoomUpdate.php' method='post'>";
     echo "<table><tr><th>Room number</th><th>Room Type</th><th>Room Description </th><th>Price per Night</th></tr>";
     foreach ($query as $room) {
