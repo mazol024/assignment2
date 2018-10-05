@@ -1,9 +1,10 @@
+<?xml version="1.0"?>
 <hotelRooms>
     <hotelRoom>
         <number>101</number>
-        <roomType>King</roomType>
-        <description>A lovely room with Garden Patio.</description>
-        <pricePerNight>225.00</pricePerNight>
+        <roomType>Twin</roomType>
+        <description>A very big room with balcony</description>
+        <pricePerNight>280.00</pricePerNight>
     </hotelRoom>
     <hotelRoom>
         <number>102</number>
